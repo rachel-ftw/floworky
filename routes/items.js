@@ -24,13 +24,13 @@ router.post( '/', ( request, response ) => {
     .then( result => response.redirect( '/items' ))
 })
 
-router.post( '/:id/completed', ( request, response ) => {
+router.post( '/:id', ( request, response ) => {
   const Item = request.app.get( 'models' ).Item
 
   const { id } = request.params
-  const { completed } = request.body
+  const { title, description, completed } = request.body
 
-  Item.update({ completed }, { where: { id, user_id: request.user.id }})
+  Item.update( { title, description, completed }, { where: { id, user_id: request.user.id }})
     .then( result => response.json({ success: true, id }))
     .catch( error => response.json({ success: false, id, message: error.message }))
 })
