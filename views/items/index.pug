@@ -27,6 +27,11 @@ block content
 
   div
     h3 Your ToDo's:
-
-    .item-page
-      +display( tree, 0 )
+  .row
+    .col-xs-11
+      .item-page
+        +display( tree, 0 )
+    .col-xs-1
+      .glyphicon.favorite-item-star
+        a(href="#")
+          .glyphicon-star
